@@ -1,0 +1,14 @@
+.calculator{
+    &__divider{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &__img{
+            background: hsl(259, 100%, 65%);
+            height: auto;
+            width: 3rem;
+            padding: .5rem;
+            border-radius: 50%;
+        }
+    }
+}

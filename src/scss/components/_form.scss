@@ -1,0 +1,19 @@
+.calculator{
+    &__form{
+        display: flex;
+        gap: 1rem;
+        &__inputs{
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            & input{
+                width: 100%;
+                height: 3rem;
+                border-radius: .5rem;
+                border: solid black 1px;
+                padding: .8rem;
+            }
+        }
+    }
+}
