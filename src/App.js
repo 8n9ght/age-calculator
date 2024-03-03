@@ -2,9 +2,9 @@
 import { useEffect, useState } from "react";
 
 function App() {
-  const [day, setDay] = useState(0);
-  const [month, setMonth] = useState(0);
-  const [year, setYear] = useState(0);
+  const [day, setDay] = useState();
+  const [month, setMonth] = useState();
+  const [year, setYear] = useState();
   
   const [ageD, setAged] = useState();
   const [ageM, setAgem] = useState();
@@ -17,10 +17,6 @@ function App() {
     const [bDay, bMonth, bYear] = birthdayFormat.split("/").map(Number);
 
     const birthday = new Date(`${bYear}-${bMonth}-${bDay}`);
-    console.log(bDay, ' jour')
-    console.log(bMonth, ' mois')
-    console.log(bYear, ' année')
-    console.log(birthday)
     const today = new Date();
 
     let yearsDiff = today.getFullYear() - birthday.getFullYear();
@@ -71,7 +67,7 @@ function App() {
               maxLength={2}
               onChange={handleChangeDay}
             ></input>
-            <p className="calculator__form__message"></p>
+            <p className="calculator__form__message">{day < 1 || day > 31 ? 'Must be a valid day' : null}</p>
           </article>
           <article className="calculator__form__inputs">
             <label for="month">Month</label>
@@ -81,7 +77,7 @@ function App() {
               maxLength={2}
               onChange={handleChangeMonth}
             ></input>
-            <p className="calculator__form__message"></p>
+            <p className="calculator__form__message">{month < 0 || month > 12 ? 'Must be a valid month' : null }</p>
           </article>
           <article className="calculator__form__inputs">
             <label for="year">Year</label>
@@ -91,7 +87,7 @@ function App() {
               onChange={handleChangeYear}
               maxLength={4}
             ></input>
-            <p className="calculator__form__message"></p>
+            <p className="calculator__form__message">{year >  new Date().getFullYear() && 'Must be in the past'}</p>
           </article>
         </section>
         <section className="calculator__divider">
@@ -104,15 +100,15 @@ function App() {
         </section>
         <section className="calculator__age">
           <article className="calculator__age__item">
-            <p className="calculator__age__item--num">{ageY}</p>
+            <p className="calculator__age__item--num">{ageY >= 0 ? ageY : '--'}</p>
             <p className="calculator__age__item--label">years</p>
           </article>
           <article className="calculator__age__item">
-            <p className="calculator__age__item--num">{ageM}</p>
+            <p className="calculator__age__item--num">{ageM >= 0 && ageM <= 12 ? ageM : '--'}</p>
             <p className="calculator__age__item--label">months</p>
           </article>
           <article className="calculator__age__item">
-            <p className="calculator__age__item--num">{ageD}</p>
+            <p className="calculator__age__item--num">{ageD >= 0 && ageD <= 31 ? ageD : '--'}</p>
             <p className="calculator__age__item--label">days</p>
           </article>
         </section>

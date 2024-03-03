@@ -72,7 +72,7 @@ html {
 .calculator__age__item {
   display: flex;
   gap: 0.5rem;
-  align-items: end;
+  align-items: flex-end;
   line-height: 3rem;
 }
 .calculator__age__item--num {
@@ -93,7 +93,6 @@ html {
   flex-direction: column;
   padding: 2rem 1.5rem;
   border-radius: 2rem 2rem 5rem 2rem;
-  height: 63%;
   gap: 1rem;
   position: absolute;
   top: 5rem;
