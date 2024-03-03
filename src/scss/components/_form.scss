@@ -7,12 +7,16 @@
             display: flex;
             flex-direction: column;
             gap: .5rem;
+            font-family: poppinsBold;
+            color: hsl(0, 1%, 44%);
             & input{
                 width: 100%;
                 height: 3rem;
                 border-radius: .5rem;
-                border: solid black 1px;
+                border: solid hsl(0, 0%, 86%) 1px;
                 padding: .8rem;
+                font-family: poppinsBold;
+                appearance: none;
             }
         }
     }

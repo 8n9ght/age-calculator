@@ -3,12 +3,21 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
         &__img{
             background: hsl(259, 100%, 65%);
             height: auto;
             width: 3rem;
             padding: .5rem;
             border-radius: 50%;
+            position: relative;
+            z-index: 1;
+        }
+        &__line{
+            background: hsl(0, 0%, 94%);
+            height: 0.1rem;
+            width: 100%;
+            position: absolute;
         }
     }
 }

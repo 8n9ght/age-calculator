@@ -68,6 +68,7 @@ function App() {
             <input
               type="text"
               id="day"
+              maxLength={2}
               onChange={handleChangeDay}
             ></input>
             <p className="calculator__form__message"></p>
@@ -77,6 +78,7 @@ function App() {
             <input
               type="text"
               id="month"
+              maxLength={2}
               onChange={handleChangeMonth}
             ></input>
             <p className="calculator__form__message"></p>
@@ -87,6 +89,7 @@ function App() {
               type="text"
               id="year"
               onChange={handleChangeYear}
+              maxLength={4}
             ></input>
             <p className="calculator__form__message"></p>
           </article>
