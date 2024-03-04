@@ -22,6 +22,11 @@
   font-family: poppinsXtraItalic;
   src: url("./../../public/fonts/Poppins-ExtraBoldItalic.ttf");
 }
+p {
+  font-family: poppins;
+  font-size: 9px;
+}
+
 html, body, #root, .wrapper {
   width: 100%;
   height: 100%;
@@ -63,6 +68,15 @@ html {
   padding: 0.8rem;
   font-family: poppinsBold;
   appearance: none;
+}
+.calculator__form__inputs--invalid {
+  border-color: hsl(0, 100%, 67%) !important;
+}
+.calculator__form__inputs__label {
+  color: hsl(0, 100%, 67%);
+}
+.calculator__form__message {
+  color: hsl(0, 100%, 67%);
 }
 
 .calculator__age {

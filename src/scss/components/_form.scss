@@ -18,6 +18,15 @@
                 font-family: poppinsBold;
                 appearance: none;
             }
+            &--invalid{
+                border-color: hsl(0, 100%, 67%) !important;
+            }
+            &__label{
+                color: hsl(0, 100%, 67%);
+            }
+        }
+        &__message{
+            color: hsl(0, 100%, 67%);
         }
     }
 }

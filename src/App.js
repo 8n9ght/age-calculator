@@ -65,38 +65,41 @@ function App() {
       <div className="calculator">
         <section className="calculator__form">
           <article className="calculator__form__inputs">
-            <label htmlFor="day">Day</label>
+          <label htmlFor="inputField" className={!(/^\d+$/.test(day) && day >= 1 && day <= 31) || day === undefined ? 'calculator__form__inputs__label' : ''}>Day</label>
             <input
               type="text"
               id="day"
               maxLength={2}
               placeholder="DD"
               onChange={handleChangeDay}
+              className={!(/^\d+$/.test(day) && day >= 1 && day <= 31) || day === undefined ? 'calculator__form__inputs--invalid' : ''}
             ></input>
             <p className="calculator__form__message">
               {(!/^\d+$/.test(day) && day !== undefined) || day < 1 || day > 31 ? 'Must be a valid day' : null}
             </p>
           </article>
           <article className="calculator__form__inputs">
-            <label htmlFor="month">Month</label>
+            <label htmlFor="month" className={(!/^\d+$/.test(month) && month !== undefined) || month < 0 || month > 12 ? 'calculator__form__inputs__label' : ''}>Month</label>
             <input
               type="text"
               id="month"
               maxLength={2}
               placeholder="MM"
               onChange={handleChangeMonth}
+              className={(!/^\d+$/.test(month) && month !== undefined) || month < 0 || month > 12 ? 'calculator__form__inputs--invalid' : ''}
             ></input>
             <p className="calculator__form__message">
               {(!/^\d+$/.test(month) && month !== undefined) || month < 0 || month > 12 ? 'Must be a valid month' : null }
             </p>
           </article>
           <article className="calculator__form__inputs">
-            <label htmlFor="year">Year</label>
+            <label htmlFor="year" className={(!/^\d+$/.test(year) && year !== undefined) || year >  new Date().getFullYear() ? 'calculator__form__inputs__label' : ''}>Year</label>
             <input
               type="text"
               id="year"
               maxLength={4}
               placeholder="YYYY"
+              className={(!/^\d+$/.test(year) && year !== undefined) || year >  new Date().getFullYear() ? 'calculator__form__inputs--invalid' : ''}
               onChange={handleChangeYear}
             ></input>
             <p className="calculator__form__message">
