@@ -10,8 +10,6 @@ function App() {
   const [ageM, setAgem] = useState();
   const [ageY, setAgey] = useState();
 
-  console.log(day, month, year)
-
   const ageCalculator = () => {
     const birthdayFormat = `${day}/${month}/${year}`;
     const [bDay, bMonth, bYear] = birthdayFormat.split("/").map(Number);
@@ -40,19 +38,26 @@ function App() {
   };
 
   const handleChangeDay = (e) => {
-    setDay(e.target.value);
+    const dayInput = e.target.value
+    setDay(dayInput);
   };
 
   const handleChangeMonth = (e) => {
-    setMonth(e.target.value);
+    const monthInput = e.target.value
+    setMonth(monthInput);
   };
 
   const handleChangeYear = (e) => {
-    setYear(e.target.value);
+    const yearInput = e.target.value
+    if (yearInput.length >= 3) {
+      setYear(yearInput);
+    }
   };
 
   useEffect(() => {
-    ageCalculator()
+    if (day !== undefined && month !== undefined && year !== undefined) {
+      ageCalculator();
+    }
   }, [day, month, year])
 
   return (
@@ -60,34 +65,43 @@ function App() {
       <div className="calculator">
         <section className="calculator__form">
           <article className="calculator__form__inputs">
-            <label for="day">Day</label>
+            <label htmlFor="day">Day</label>
             <input
               type="text"
               id="day"
               maxLength={2}
+              placeholder="DD"
               onChange={handleChangeDay}
             ></input>
-            <p className="calculator__form__message">{day < 1 || day > 31 ? 'Must be a valid day' : null}</p>
+            <p className="calculator__form__message">
+              {(!/^\d+$/.test(day) && day !== undefined) || day < 1 || day > 31 ? 'Must be a valid day' : null}
+            </p>
           </article>
           <article className="calculator__form__inputs">
-            <label for="month">Month</label>
+            <label htmlFor="month">Month</label>
             <input
               type="text"
               id="month"
               maxLength={2}
+              placeholder="MM"
               onChange={handleChangeMonth}
             ></input>
-            <p className="calculator__form__message">{month < 0 || month > 12 ? 'Must be a valid month' : null }</p>
+            <p className="calculator__form__message">
+              {(!/^\d+$/.test(month) && month !== undefined) || month < 0 || month > 12 ? 'Must be a valid month' : null }
+            </p>
           </article>
           <article className="calculator__form__inputs">
-            <label for="year">Year</label>
+            <label htmlFor="year">Year</label>
             <input
               type="text"
               id="year"
-              onChange={handleChangeYear}
               maxLength={4}
+              placeholder="YYYY"
+              onChange={handleChangeYear}
             ></input>
-            <p className="calculator__form__message">{year >  new Date().getFullYear() && 'Must be in the past'}</p>
+            <p className="calculator__form__message">
+              {(!/^\d+$/.test(year) && year !== undefined) || year >  new Date().getFullYear() ? 'Must be in the past' : null}
+            </p>
           </article>
         </section>
         <section className="calculator__divider">
@@ -104,7 +118,7 @@ function App() {
             <p className="calculator__age__item--label">years</p>
           </article>
           <article className="calculator__age__item">
-            <p className="calculator__age__item--num">{ageM >= 0 && ageM <= 12 ? ageM : '--'}</p>
+            <p className="calculator__age__item--num">{ageM >= 0 && ageM <= 12 ? ageM : '--' }</p>
             <p className="calculator__age__item--label">months</p>
           </article>
           <article className="calculator__age__item">
