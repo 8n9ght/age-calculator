@@ -57,19 +57,25 @@ function App() {
   };
 
   const handleChangeDay = (e) => {
-    const dayInput = e.target.value;
+    let dayInput = e.target.value;
+    if (parseInt(dayInput) < 10) {
+      dayInput = '0' + dayInput;
+    }
     setDay(dayInput);
     ageCalculator();
   };
 
   const handleChangeMonth = (e) => {
-    const monthInput = e.target.value;
+    let monthInput = e.target.value;
+    if (parseInt(monthInput) < 10) {
+      monthInput = '0' + monthInput;
+    }
     setMonth(monthInput);
     ageCalculator();
   };
 
   const handleChangeYear = (e) => {
-    const yearInput = e.target.value;
+    let yearInput = e.target.value;
       setYear(yearInput);
       ageCalculator();
   };
