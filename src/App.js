@@ -28,7 +28,6 @@ function App() {
     const birthdayFormat = `${day}/${month}/${year}`;
     const [bDay, bMonth, bYear] = birthdayFormat.split("/").map(Number);
 
-    try{
       if (!dateValidator(bYear, bMonth, bDay)) {
         setDateerror(true);
       } else {
@@ -55,9 +54,6 @@ function App() {
       setAged(daysDiff);
       setAgem(monthDiff);
       setAgey(yearsDiff);
-    } catch(err){
-      alert(err)
-    }
   };
 
   const handleChangeDay = (e) => {
@@ -79,9 +75,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (day !== undefined && month !== undefined && year !== undefined) {
       ageCalculator();
-    }
   }, [ageCalculator, day, month, year]);
 
   return (
