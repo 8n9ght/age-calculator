@@ -28,13 +28,9 @@ function App() {
     const birthdayFormat = `${day}/${month}/${year}`;
     const [bDay, bMonth, bYear] = birthdayFormat.split("/").map(Number);
 
-    const isValidDate = new Date(bYear, bMonth - 1, bDay);
-
     if (!dateValidator(bYear, bMonth, bDay)) {
-      console.log("Invalid date!");
       setDateerror(true);
     } else {
-      console.log(isValidDate);
       setDateerror(false);
     }
 
@@ -63,17 +59,19 @@ function App() {
   const handleChangeDay = (e) => {
     const dayInput = e.target.value;
     setDay(dayInput);
+    ageCalculator();
   };
 
   const handleChangeMonth = (e) => {
     const monthInput = e.target.value;
     setMonth(monthInput);
+    ageCalculator();
   };
 
   const handleChangeYear = (e) => {
     const yearInput = e.target.value;
       setYear(yearInput);
-      console.log(yearInput)
+      ageCalculator();
   };
 
   useEffect(() => {
@@ -103,7 +101,7 @@ function App() {
               id="day"
               maxLength={2}
               placeholder="DD"
-              onInput={handleChangeDay}
+              onChange={handleChangeDay}
               className={
                 (!/^\d+$/.test(day) && day >= 1 && day <= 31) ||
                 day === ""
@@ -143,7 +141,7 @@ function App() {
               id="month"
               maxLength={2}
               placeholder="MM"
-              onInput={handleChangeMonth}
+              onChange={handleChangeMonth}
               className={
                 (!/^\d+$/.test(month) && month !== undefined) ||
                 month < 0 ||
@@ -188,7 +186,7 @@ function App() {
                   ? "calculator__form__inputs--invalid"
                   : ""
               }
-              onInput={handleChangeYear}
+              onChange={handleChangeYear}
             ></input>
             <p className="calculator__form__message">
               {year === ""
