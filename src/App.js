@@ -95,7 +95,7 @@ function App() {
               DAY
             </label>
             <input
-              type="text"
+              type="number"
               id="day"
               maxLength={2}
               placeholder="DD"
@@ -135,7 +135,7 @@ function App() {
               MONTH
             </label>
             <input
-              type="text"
+              type="number"
               id="month"
               maxLength={2}
               placeholder="MM"
@@ -173,7 +173,7 @@ function App() {
               YEAR
             </label>
             <input
-              type="text"
+              type="number"
               id="year"
               maxLength={4}
               placeholder="YYYY"
