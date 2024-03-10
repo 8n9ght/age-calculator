@@ -1,0 +1,34 @@
+@media screen and (min-width: 1024px) {
+    .calculator{
+        width: 50%;
+        gap: 1rem;
+        &__form{
+            width: 80%;
+            &__inputs{
+                & input{
+                    &:focus{
+                        outline-color: hsl(259, 100%, 65%);
+                    }
+                }
+            }
+        }
+        &__divider{
+            justify-content: flex-end;
+            &__img{
+                &:hover{
+                    background: #000;
+                    cursor: pointer;
+                }
+            }
+            &__line{
+                background: hsl(0, 0%, 94%);
+                height: 0.1rem;
+                width: 100%;
+                position: absolute;
+            }
+        }
+        &__age{
+            gap: .5rem;
+        }
+    }
+}

@@ -6,7 +6,7 @@
             width: 30%;
             display: flex;
             flex-direction: column;
-            gap: .5rem;
+            gap: .3rem;
             font-family: poppinsBold;
             color: hsl(0, 1%, 44%);
             & input{
@@ -17,6 +17,10 @@
                 padding: .8rem;
                 font-family: poppinsBold;
                 appearance: none;
+            }
+            & label{
+                font-size: 10px;
+                letter-spacing: .1rem;
             }
             &--invalid{
                 border-color: hsl(0, 100%, 67%) !important;
