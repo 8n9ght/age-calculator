@@ -28,32 +28,36 @@ function App() {
     const birthdayFormat = `${day}/${month}/${year}`;
     const [bDay, bMonth, bYear] = birthdayFormat.split("/").map(Number);
 
-    if (!dateValidator(bYear, bMonth, bDay)) {
-      setDateerror(true);
-    } else {
-      setDateerror(false);
+    try{
+      if (!dateValidator(bYear, bMonth, bDay)) {
+        setDateerror(true);
+      } else {
+        setDateerror(false);
+      }
+  
+      const birthday = new Date(`${bYear}-${bMonth}-${bDay}`);
+      const today = new Date();
+  
+      let yearsDiff = today.getFullYear() - birthday.getFullYear();
+      let monthDiff = today.getMonth() - birthday.getMonth();
+      let daysDiff = today.getDate() - birthday.getDate();
+  
+      if (monthDiff < 0 || (monthDiff === 0 && daysDiff < 0)) {
+        yearsDiff--;
+        monthDiff += 12;
+      }
+  
+      if (daysDiff < 0) {
+        const prevMonth = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+        daysDiff += Math.floor((today - prevMonth) / (1000 * 60 * 60 * 24));
+      }
+  
+      setAged(daysDiff);
+      setAgem(monthDiff);
+      setAgey(yearsDiff);
+    } catch(err){
+      alert(err)
     }
-
-    const birthday = new Date(`${bYear}-${bMonth}-${bDay}`);
-    const today = new Date();
-
-    let yearsDiff = today.getFullYear() - birthday.getFullYear();
-    let monthDiff = today.getMonth() - birthday.getMonth();
-    let daysDiff = today.getDate() - birthday.getDate();
-
-    if (monthDiff < 0 || (monthDiff === 0 && daysDiff < 0)) {
-      yearsDiff--;
-      monthDiff += 12;
-    }
-
-    if (daysDiff < 0) {
-      const prevMonth = new Date(today.getFullYear(), today.getMonth() - 1, 1);
-      daysDiff += Math.floor((today - prevMonth) / (1000 * 60 * 60 * 24));
-    }
-
-    setAged(daysDiff);
-    setAgem(monthDiff);
-    setAgey(yearsDiff);
   };
 
   const handleChangeDay = (e) => {
